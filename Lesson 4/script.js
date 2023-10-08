@@ -27,7 +27,7 @@ var matrix = [];
     }
  
  function setup() {
-     characters(1,150)
+     characters(1,100)
      characters(2,10)
      characters(3,6)
      characters(4,1)
