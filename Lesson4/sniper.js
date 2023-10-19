@@ -1,6 +1,7 @@
-class Sniper extends LivingCreature {
+let random = require("./random.js");
+module.exports =class Sniper  {
     constructor(x, y, index) {
-        super(x,y,index)
+        // super(x,y,index)
         this.energy = 15;
         this.directions = [];
     }

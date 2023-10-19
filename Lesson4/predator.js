@@ -1,4 +1,7 @@
-class Predator extends LivingCreature {
+let LivingCreature = require("./livingCreature.js");
+let random = require("./random.js");
+
+module.exports =class Predator extends LivingCreature {
     constructor(x, y, index) {
         super(x,y,index)
         this.energy = 25;
