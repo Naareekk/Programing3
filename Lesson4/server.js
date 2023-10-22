@@ -44,6 +44,7 @@ var m = 30
  immortalArr = [];
  bombArr = [];
  specialArr = []
+
     for (let i = 0; i < n; i++) {
         matrix.push([])
         for(let j = 0; j < m ; j++){
@@ -53,8 +54,8 @@ var m = 30
     
     function characters(index,count){
         for (let i = 0; i < count; i++) {
-            var v = Math.floor(random(0,n))
-            var w = Math.floor(random(0,m))
+            var v = Math.floor(random(n))
+            var w = Math.floor(random(m))
             matrix[v][w] = index
             
         }
@@ -124,12 +125,13 @@ var m = 30
      io.emit("update matrix", matrix)
     }
     
-    io.on("connection", function(socket){
-       socket.emit("update matrix", matrix)
-       setUpGame()    
-       startPlaying()
-      })
-
+    // let but = document.createElement("button")
+    // but.setAttribute("id", "button1")
+    // but.addEventListener("click", poco)
+    // function poco(){
+    //     console.log("aaa");
+        
+    // }
 
       
     let intervalID;
@@ -140,3 +142,10 @@ var m = 30
           playGame()
        },1000)
     }
+
+
+    io.on("connection", function(socket){
+        socket.emit("update matrix", matrix)
+        setUpGame()    
+        startPlaying()
+       })

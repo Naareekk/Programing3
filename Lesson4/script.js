@@ -15,8 +15,11 @@ function drawfull(matrix) {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
-            if (matrix[y][x] == 1) {
+            if (matrix[y][x] == 1 && exanak.innerHTML == "Dzmer") {
                 fill("green");
+            }
+            if (matrix[y][x] == 1 && exanak.innerHTML == "Amar") {
+                fill("Whitesmoke");
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -44,3 +47,23 @@ function drawfull(matrix) {
 }
 
 socket.on("update matrix", drawfull)
+
+// function poco(){
+//     bombArr = []
+//     console.log(bombArr);
+    
+// }
+
+let count = 0
+function miban(){
+    count++
+    
+    if(count%2 == 0){
+        exanak.innerHTML = "Amar"
+       
+        }
+    else{
+        exanak.innerHTML = "Dzmer"
+    }
+}
+

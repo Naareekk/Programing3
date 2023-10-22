@@ -1,5 +1,6 @@
 let LivingCreature = require("./livingCreature.js");
 let random = require("./random.js");
+let Bomb = require("./bomb.js");
 
 module.exports =class Immortal extends LivingCreature {
     constructor(x, y, index) {
