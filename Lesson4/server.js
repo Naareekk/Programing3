@@ -124,6 +124,8 @@ var m = 30
      }
      io.emit("update matrix", matrix)
     }
+    socket.on("update count", count)
+
     
     // let but = document.createElement("button")
     // but.setAttribute("id", "button1")
@@ -132,15 +134,30 @@ var m = 30
     //     console.log("aaa");
         
     // }
-
-      
+    let count = require("./script.js")
+    console.log(count);
+    
     let intervalID;
-
+      
+    let speed = 1;
+    console.log(speed);
+    
+    if(count%2 == 0){
+       console.log(speed);
+       
+        speed = 5000
+        }
+    else{
+        speed = 100
+    }
     function startPlaying(){
        clearInterval(intervalID)
+       console.log(count);
+
        intervalID = setInterval(() => {
           playGame()
-       },1000)
+          
+       },speed)
     }
 
 

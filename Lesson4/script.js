@@ -1,10 +1,7 @@
-
-
 var side = 50;
 
 const socket = io()
 function setup() {
-
     createCanvas(1500, 1500);
     background('#acacac');
 }
@@ -53,17 +50,23 @@ socket.on("update matrix", drawfull)
 //     console.log(bombArr);
     
 // }
+let button = getElementById("exanak")
+button.addEventListener("click", miban)
+// socket.emit("update count", count)
 
 let count = 0
-function miban(){
-    count++
-    
+function miban(){ 
+    ++count
+    console.log(count)
+    console.log(count%2 == 0)
+
     if(count%2 == 0){
-        exanak.innerHTML = "Amar"
+        exanak.innerHTML = "Dzmer"
+        console.log(count)
        
         }
     else{
-        exanak.innerHTML = "Dzmer"
+        exanak.innerHTML = "Amar"
     }
+    
 }
-
