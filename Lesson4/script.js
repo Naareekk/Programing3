@@ -1,22 +1,43 @@
-var side = 50;
-
 const socket = io()
+let side = 30
 function setup() {
     createCanvas(1500, 1500);
     background('#acacac');
 }
 
 
-function drawfull(matrix) {
+gmp.onclick = function (){
+   
+        gmp.style.background = "orange"
+        setTimeout(() => {
+            gmp.style.background = "green"
+          },3000);
 
+}
+
+count = 0
+
+
+season.onclick = function () {
+    count++
+    if (count % 2 == 0) {
+        season.innerHTML = 'Amar'
+    }
+    else {
+        season.innerHTML = 'Dzmer'
+    }
+    socket.emit("update season", count);
+
+}
+
+function drawful(matrix) {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
-
-            if (matrix[y][x] == 1 && exanak.innerHTML == "Dzmer") {
+            if (matrix[y][x] == 1 && season.innerHTML == 'Amar') {
                 fill("green");
             }
-            if (matrix[y][x] == 1 && exanak.innerHTML == "Amar") {
-                fill("Whitesmoke");
+            else if (matrix[y][x] == 1 && season.innerHTML == 'Dzmer') {
+                fill("whitesmoke");
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -36,37 +57,11 @@ function drawfull(matrix) {
             else if (matrix[y][x] == 6) {
                 fill("blue")
             }
-
             rect(x * side, y * side, side, side);
         }
     }
-
 }
 
-socket.on("update matrix", drawfull)
 
-// function poco(){
-//     bombArr = []
-//     console.log(bombArr);
-    
-// }
-let button = getElementById("exanak")
-button.addEventListener("click", miban)
-// socket.emit("update count", count)
 
-let count = 0
-function miban(){ 
-    ++count
-    console.log(count)
-    console.log(count%2 == 0)
-
-    if(count%2 == 0){
-        exanak.innerHTML = "Dzmer"
-        console.log(count)
-       
-        }
-    else{
-        exanak.innerHTML = "Amar"
-    }
-    
-}
+socket.on('update matrix', drawful)

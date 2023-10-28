@@ -1,9 +1,9 @@
-let LivingCreature = require("./livingCreature.js");
-let random = require("./random.js");
+let LivingCreature = require('./livingCreature')
+let random = require("./random");
 
-module.exports = class Bomb extends LivingCreature {
+module.exports = class Bomb extends LivingCreature{
     constructor(x, y, index) {
-        super(x,y,index)
+        super(x, y, index)
         this.energy = 1;
         this.directions = [];
     }
@@ -20,11 +20,10 @@ module.exports = class Bomb extends LivingCreature {
         ];
     }
 
-    chooseCell(character) {
-        this.getNewCoordinates()
-        return super.chooseCell(character);
-       
-    }
+    chooseCell(ch) {
+        this.getNewCoordinates();
+        return super.chooseCell(ch);
+     }     
 
     eat() {
         let foods = this.chooseCell(3)
@@ -47,7 +46,7 @@ module.exports = class Bomb extends LivingCreature {
                 this.die()
             }
         }
-    
+
     }
     die() {
         matrix[this.y][this.x] = 0;
@@ -58,8 +57,8 @@ module.exports = class Bomb extends LivingCreature {
             }
         }
     }
- 
 
-      
-    
+
+
+
 }

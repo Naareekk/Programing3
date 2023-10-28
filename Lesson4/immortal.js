@@ -1,10 +1,10 @@
-let LivingCreature = require("./livingCreature.js");
-let random = require("./random.js");
-let Bomb = require("./bomb.js");
+let LivingCreature = require('./livingCreature')
+let Bomb = require('./bomb')
+let random = require("./random");
 
-module.exports =class Immortal extends LivingCreature {
+module.exports = class Immortal extends LivingCreature{
     constructor(x, y, index) {
-        super(x,y,index)
+        super(x, y, index)
         this.energy = 1;
         this.directions = [];
     }
@@ -21,9 +21,9 @@ module.exports =class Immortal extends LivingCreature {
         ];
     }
 
-    chooseCell(character) {
-        this.getNewCoordinates()
-        return super.chooseCell(character);
+    chooseCell(ch) {
+        this.getNewCoordinates();
+        return super.chooseCell(ch);
     }
     eat() {
 
@@ -35,8 +35,8 @@ module.exports =class Immortal extends LivingCreature {
             if (this.energy % 3 != 0) {
                 this.energy++;
                 matrix[this.y][this.x] = 0
-                 newX = food[0]
-                 newY = food[1]
+                newX = food[0]
+                newY = food[1]
                 matrix[food[1]][food[0]] = 4
                 this.x = newX
                 this.y = newY
@@ -45,8 +45,8 @@ module.exports =class Immortal extends LivingCreature {
                 this.energy++;
                 matrix[this.y][this.x] = 5
 
-                var bombnew = new Bomb(this.x, this.y, 5);
-                bombArr.push(bombnew);
+                var newBomb = new Bomb(this.x, this.y, 5);
+                bombArr.push(newBomb);
 
                 newX = food[0]
                 newY = food[1]
@@ -54,7 +54,7 @@ module.exports =class Immortal extends LivingCreature {
                 this.x = newX
                 this.y = newY
 
-     
+
 
             }
             for (var i in grassArr) {
@@ -63,12 +63,12 @@ module.exports =class Immortal extends LivingCreature {
                     break;
                 }
             }
-         
 
-             
+
+
         }
-        else{
-            this.move();    
+        else {
+            this.move();
         }
     }
 
