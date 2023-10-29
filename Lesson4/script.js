@@ -7,10 +7,13 @@ function setup() {
 
 
 gmp.onclick = function (){
-   
-        gmp.style.background = "orange"
+    
+   traq = true
+   socket.emit("paytyun", traq);
+
+        gmp.style.background = "whitesmoke"
         setTimeout(() => {
-            gmp.style.background = "green"
+            gmp.style.background = "orange"
           },3000);
 
 }
@@ -60,7 +63,55 @@ function drawful(matrix) {
             rect(x * side, y * side, side, side);
         }
     }
+
+function countAllChar() {
+    var allGrassCount = 0;
+    var allGrassEaterCount = 0;
+    var allPredatorCount = 0;
+    var allImmortalCount = 0;
+
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            if (matrix[y][x] == 1) {
+                allGrassCount++;
+                data.allGrass = allGrassCount
+            }
+            if (matrix[y][x] == 2) {
+                allGrassEaterCount++;
+                data.allGrassEater = allGrassEaterCount
+            }
+            if (matrix[y][x] == 3) {
+                allPredatorCount++;
+                data.allPredatorCount = allPredatorCount
+            }
+            if (matrix[y][x] == 4) {
+                allImmortalCount++;
+                data.allImmortalCount = allImmortalCount
+            }
+
+        }
+    }
+
+    return data
 }
+    socket.emit('Total statistics', countAllChar())
+    socket.on('display statistics', (data) => {
+        statistics = data
+
+        var updatedText = '';
+        for (var key in statistics) {
+            updatedText += '\n' + key + ' ' + statistics[key];
+        }
+        p.innerText = updatedText;
+
+
+    })
+}
+
+var data = {}
+
+var p = document.createElement('p')
+document.body.appendChild(p)
 
 
 

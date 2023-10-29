@@ -1,8 +1,17 @@
 
-#exanak{
+#season{
     position: absolute;
     left: 60%;
     top: 10%;
+    height: 100px;
+    width: 300px;
+    font-size: 35px;
+    background-color:orange;
+}
+#gmp{
+    position: absolute;
+    left: 60%;
+    top: 20%;
     height: 100px;
     width: 300px;
     font-size: 35px;

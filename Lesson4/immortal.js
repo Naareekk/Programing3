@@ -1,5 +1,5 @@
 let LivingCreature = require('./livingCreature')
-let Bomb = require('./bomb')
+let Bomb = require('./bomb.js')
 let random = require("./random");
 
 module.exports = class Immortal extends LivingCreature{

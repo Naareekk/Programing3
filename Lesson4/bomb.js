@@ -47,6 +47,7 @@ module.exports = class Bomb extends LivingCreature{
             }
         }
 
+
     }
     die() {
         matrix[this.y][this.x] = 0;
@@ -55,6 +56,25 @@ module.exports = class Bomb extends LivingCreature{
                 bombArr.splice(i, 1);
                 break;
             }
+        }
+    }
+    poco() {
+        matrix[this.y][this.x] = 0
+        for (var i in this.directions) {
+            var x = this.directions[i][0];
+            var y = this.directions[i][1];
+
+            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                matrix[this.y - 1][this.x - 1] = 0
+                matrix[this.y - 1][this.x + 1] = 0
+                matrix[this.y - 1][this.x] = 0
+                matrix[this.y][this.x - 1] = 0
+                matrix[this.y][this.x + 1] = 0
+                matrix[this.y + 1][this.x - 1] = 0
+                matrix[this.y + 1][this.x] = 0
+                matrix[this.y + 1][this.x + 1] = 0
+            }
+
         }
     }
 
